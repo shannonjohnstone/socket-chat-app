@@ -20,6 +20,8 @@ Current contains a public folder for the UI and a server folder for the server a
 
 ## Setup
 
+*Note: I am using yarn in the instructions steps below, some people might have issue install socket.io using yarn. If this is the case please use npm instead for all steps below*
+
 - clone repository to computer
 - run `yarn install`
 - `yarn start`

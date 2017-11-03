@@ -1,13 +1,13 @@
 const path = require('path')
+const http = require('http')
 const express = require('express')
 
 const config = require('./config')
 
 const publicPath = path.join(__dirname, '../public')
 const app = express()
+const server = http.createServer(app)
 
-app.get('/', (req, res) => {
-  res.sendFile(`${publicPath}/index.html`)
-})
+app.use(express.static(publicPath))
 
-app.listen(config.PORT, () => console.log(`Server running on http://localhost:${config.PORT}`))
+server.listen(config.PORT, () => console.log(`Server running on http://localhost:${config.PORT}`))
