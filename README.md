@@ -32,3 +32,24 @@ Doing the above setup will get the project on your computer and running locally 
 
 #### nodemon
 This project is using nodemon so when you run the project the server will automatically take on the changes and restart.
+
+## Socket.io setup
+
+#### Server
+We require the socket.io package in our server/index.js file and initialise with the following
+
+```js
+const socketIO = require('socket.io')
+const server = http.createServer(app)
+const io = socketIO(server)
+```
+Now doing the above in our server we can go to http://localhost:3000/socket.io/socket.io.js and now the home of the socket.io script in our app
+
+#### Frontend UI
+Now in the UI, in our case at the moment that being public/index.html we will add socket.io
+
+```html
+<script src="/socket.io/socket.io.js"></script>
+```
+
+The location being used in this script is relative to our server
