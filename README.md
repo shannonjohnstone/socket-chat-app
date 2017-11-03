@@ -27,3 +27,6 @@ Current contains a public folder for the UI and a server folder for the server a
 Doing the above setup will get the project on your computer and running locally at the location of
 
 `http://localhost:3000`
+
+#### nodemon
+This project is using nodemon so when you run the project the server will automatically take on the changes and restart.
