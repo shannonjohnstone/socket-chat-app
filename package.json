@@ -1,0 +1,14 @@
+{
+  "name": "socket-chat-app",
+  "version": "1.0.0",
+  "description": "Socket IO chat appliation",
+  "main": "index.js",
+  "scripts": {
+    "start-server": "nodemon ./server"
+  },
+  "author": "Shannon Johnstone",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.16.2"
+  }
+}
