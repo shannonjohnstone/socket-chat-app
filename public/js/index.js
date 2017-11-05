@@ -14,9 +14,4 @@ const socket = io();
     console.log(data, 'newMessage from the server....');
   })
 
-  // emitting `createMessage` back to the server
-  socket.emit('createMessage', {
-    text: 'This is message from the UI',
-    user: 'user 2'
-  })
 })()

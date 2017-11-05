@@ -13,17 +13,11 @@ const io = socketIO(server)
 app.use(express.static(publicPath))
 
 io.on('connection', (socket) => {
-  console.log('Server connection from server/index...');
-
-  socket.emit('newMessage', {
-    text: 'This is a new message coming from the server',
-    createAt: new Date(),
-    user: 'user 1'
-  })
+  console.log('New user connected to chat server...');
 
   socket.on('createMessage', data => {
     const newData = { ...data, createAt: new Date() }
-    console.log(newData, 'createMessage from UI')
+    io.emit('newMessage', newData) // this will emit any item emitted with `createMessage` to everyone connected at them time
   })
 })
 
