@@ -19,8 +19,6 @@ app.set('view engine', 'pug')
 
 app.use(express.static(publicPath))
 
-console.log(NODE_ENV, 'NODE_ENV');
-console.log(NODE_ENV === 'development', 'NODE_ENV === development');
 app.get('/', (req, res) => {
   res.render('index.pug', {
     isDevelopment: NODE_ENV === 'development',
