@@ -63,3 +63,29 @@ Current this application is deployed to Heroku. The location of this deployment 
 **Deployed**
 
 https://rocky-bastion-89122.herokuapp.com/
+
+#### Managing releases
+General process of this project at the moment going from development to production is as follows;
+
+- makes changes locally
+- push changes to master
+- create release and deploy to Heroku
+
+In the near future there will be a pipeline setup for this project that will be as follows;
+
+- makes changes locally from own branch
+- push changes into development branch
+- push development branch to development environment
+- create release and push to production
+
+Some commands that may help with this process;
+
+```sh
+git ci -am 'New build'
+git tag -a v0.4-beta -m 'Release, minor text change, update slugignore'
+git push --tags && git push
+```
+
+```sh
+git ci -am 'New build' && git tag -a v0.4-beta -m 'Release, minor text change, update slugignore' && git push --tags && git push
+```
