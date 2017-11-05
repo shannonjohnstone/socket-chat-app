@@ -9,9 +9,7 @@
     "start-dev-server": "nodemon --exec npm run babel-node -- ./server",
     "start-dev": "npm-run-all --parallel compile-dev-frontend start-dev-server",
     "start": "node ./dist/server",
-    "build": "babel server/ -d dist/server --copy-files && babel public -d dist/public --copy-files",
-    "heroku-prebuild": "echo This runs before Heroku installs your dependencies.",
-    "heroku-postbuild": "babel server/ -d dist/server --copy-files && babel public -d dist/public --copy-files"
+    "build": "babel server/ -d dist/server --copy-files && babel public -d dist/public --copy-files"
   },
   "babel": {
     "plugins": [

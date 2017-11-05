@@ -13,7 +13,7 @@ const io = socketIO(server)
 const PORT = process.env.PORT
 const NODE_ENV = process.env.NODE_ENV
 
-if (process.env.NODE_ENV !== 'production') app.use(express.static(`${publicPath}/index-dev.html`))
+if (process.env.NODE_ENV !== 'production') app.use(express.static(`${publicPath}/local-dist`))
 else app.use(express.static(publicPath))
 
 io.on('connection', (socket) => {
@@ -21,7 +21,7 @@ io.on('connection', (socket) => {
 
   socket.on('createMessage', data => {
     const newData = { ...data, createAt: new Date() }
-    io.emit('newMessage', newData) // this will emit any item emitted with `createMessage` to everyone connected at them time
+    io.broadcast.emit('newMessage', newData) // this will emit any item emitted with `createMessage` to everyone connected at them time
   })
 })
 
