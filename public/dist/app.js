@@ -3,6 +3,7 @@
 var socket = io();
 
 (function () {
+  console.log('Test UI update babel');
   socket.on('connect', function () {
     console.log('Connected to server');
   });

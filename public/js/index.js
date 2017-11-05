@@ -1,6 +1,7 @@
 const socket = io();
 
 (function() {
+  console.log('Test UI update babel');
   socket.on('connect', () => {
     console.log('Connected to server')
   })

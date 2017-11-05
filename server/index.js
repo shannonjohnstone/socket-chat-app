@@ -12,7 +12,8 @@ const io = socketIO(server)
 
 const PORT = process.env.PORT
 
-app.use(express.static(publicPath))
+if (process.env.NODE_ENV !== 'production') app.use(express.static(publicPath))
+else app.use(express.static(`${publicPath}/index-dev.html`))
 
 io.on('connection', (socket) => {
   console.log('New user connected to chat server...');
@@ -25,6 +26,7 @@ io.on('connection', (socket) => {
 
 server.listen(PORT, () => {
   if (PORT !== 'production') {
+    console.log('Test server update babel...')
     console.log(`Server running on http://localhost:${PORT}`)
   }
 })
