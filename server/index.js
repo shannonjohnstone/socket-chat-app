@@ -11,6 +11,7 @@ const server = http.createServer(app)
 const io = socketIO(server)
 
 const PORT = process.env.PORT
+const NODE_ENV = process.env.NODE_ENV
 
 if (process.env.NODE_ENV !== 'production') app.use(express.static(publicPath))
 else app.use(express.static(`${publicPath}/index-dev.html`))
@@ -25,8 +26,7 @@ io.on('connection', (socket) => {
 })
 
 server.listen(PORT, () => {
-  console.log(process.env.NODE_ENV, 'NODE_ENV');
-  if (PORT !== 'production') {
+  if (NODE_ENV !== 'production') {
     console.log('Test server update babel...')
     console.log(`Server running on http://localhost:${PORT}`)
   }
