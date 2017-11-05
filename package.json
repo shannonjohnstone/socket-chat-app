@@ -11,7 +11,7 @@
     "start": "node ./dist/server",
     "build": "babel server/ -d dist/server --copy-files && babel public -d dist/public --copy-files",
     "heroku-prebuild": "echo This runs before Heroku installs your dependencies.",
-    "heroku-postbuild": "echo This runs afterwards."
+    "heroku-postbuild": "babel server/ -d dist/server --copy-files && babel public -d dist/public --copy-files"
   },
   "babel": {
     "plugins": [
