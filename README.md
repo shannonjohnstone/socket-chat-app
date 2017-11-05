@@ -53,3 +53,11 @@ Now in the UI, in our case at the moment that being public/index.html we will ad
 ```
 
 The location being used in this script is relative to our server
+
+## Deployment (Heroku)
+
+Current this application is deployed to Heroku. The location of this deployment is as follows
+
+**Deployed**
+
+https://rocky-bastion-89122.herokuapp.com/
