@@ -26,9 +26,6 @@ app.get('/', (req, res) => {
   })
 })
 
-// if (process.env.NODE_ENV !== 'production') app.use(express.static(`${publicPath}/local-dist`))
-// else app.use(express.static(publicPath))
-
 io.on('connection', (socket) => {
   console.log('New user connected to chat server...');
 
