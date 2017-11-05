@@ -22,10 +22,8 @@ io.on('connection', (socket) => {
   })
 
   socket.on('createMessage', data => {
-    console.log({
-      ...data,
-      createAt: new Date()
-    }, 'createMessage from UI', )
+    const newData = { ...data, createAt: new Date() }
+    console.log(newData, 'createMessage from UI')
   })
 })
 
