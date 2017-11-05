@@ -12,9 +12,6 @@
     "start": "node ./dist/server",
     "build": "babel server/ -d dist/server --copy-files && babel public -d dist/public --copy-files"
   },
-  "pre-commit": [
-    "build"
-  ],
   "author": "Shannon Johnstone",
   "license": "MIT",
   "dependencies": {
