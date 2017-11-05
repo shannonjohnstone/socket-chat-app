@@ -25,7 +25,7 @@ app.get('/', (req, res) => {
     title: 'Chat Application'
   })
 })
-
+console.log('test');
 io.on('connection', (socket) => {
   console.log('New user connected to chat server...');
 
