@@ -25,6 +25,7 @@ io.on('connection', (socket) => {
 })
 
 server.listen(PORT, () => {
+  console.log(process.env.NODE_ENV, 'NODE_ENV');
   if (PORT !== 'production') {
     console.log('Test server update babel...')
     console.log(`Server running on http://localhost:${PORT}`)
