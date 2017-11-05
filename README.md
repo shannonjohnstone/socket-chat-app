@@ -18,13 +18,15 @@ Current contains a public folder for the UI and a server folder for the server a
 
 **Current server** is a basic express server the serves a index.html page from the public folder
 
+**Current Socket.io** basic communication between frontend clients using the same URL, tested by firing `socket.emit` events from within the browser console
+
 ## Setup
 
-*Note: I am using yarn in the instructions steps below, some people might have issue install socket.io using yarn. If this is the case please use npm instead for all steps below*
+*Note: I am using npm for installation of package as there seems to be an issue installing socket.io with yarn*
 
 - clone repository to computer
-- run `yarn install`
-- `yarn start`
+- run `npm install`
+- `npm start`
 
 Doing the above setup will get the project on your computer and running locally at the location of
 
