@@ -1,6 +1,6 @@
 import { DEVELOPMENT } from './constants'
 
-const env = process.env.ENV || DEVELOPMENT
+const env = process.env.NODE_ENV || DEVELOPMENT
 
 if (env === DEVELOPMENT) {
   const envConfig = require('./config.json')[env]
