@@ -8,8 +8,10 @@
     "compile-dev-frontend": "babel --no-babelrc ./public/js/index.js -w -o ./public/dist/app.js --presets=latest,stage-0 --plugins=transform-object-rest-spread",
     "start-dev-server": "nodemon --exec npm run babel-node -- ./server",
     "start-dev": "npm-run-all --parallel compile-dev-frontend start-dev-server",
-    "start": "babel ./dist/server",
-    "build": "babel server/ -d dist/server --copy-files && babel public -d dist/public --copy-files"
+    "start": "node ./dist/server",
+    "build": "babel server/ -d dist/server --copy-files && babel public -d dist/public --copy-files",
+    "heroku-prebuild": "echo This runs before Heroku installs your dependencies.",
+    "heroku-postbuild": "echo This runs afterwards."
   },
   "babel": {
     "plugins": [
@@ -19,12 +21,12 @@
   "author": "Shannon Johnstone",
   "license": "MIT",
   "dependencies": {
+    "babel-cli": "^6.26.0",
     "express": "^4.16.2",
     "morgan": "^1.9.0",
     "socket.io": "^2.0.4"
   },
   "devDependencies": {
-    "babel-cli": "^6.26.0",
     "babel-plugin-transform-object-rest-spread": "^6.26.0",
     "babel-preset-latest": "^6.24.1",
     "babel-preset-stage-0": "^6.24.1",
