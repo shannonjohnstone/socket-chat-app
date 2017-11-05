@@ -1,14 +1,16 @@
+require('./config')
+
 import path from 'path'
 import http from 'http'
 import express from 'express'
 import socketIO from 'socket.io'
 
-import { PORT } from './config'
-
 const publicPath = path.join(__dirname, '../public')
 const app = express()
 const server = http.createServer(app)
 const io = socketIO(server)
+
+const PORT = process.env.PORT
 
 app.use(express.static(publicPath))
 
@@ -21,4 +23,8 @@ io.on('connection', (socket) => {
   })
 })
 
-server.listen(PORT, () => console.log(`Server running on http://localhost:${PORT}`))
+server.listen(PORT, () => {
+  if (PORT !== 'production') {
+    console.log(`Server running on http://localhost:${PORT}`)
+  }
+})
