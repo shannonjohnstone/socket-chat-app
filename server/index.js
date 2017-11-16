@@ -29,6 +29,9 @@ app.get('/', (req, res) => {
 io.on('connection', (socket) => {
   console.log('New user connected to chat server...');
 
+  socket.emit('newMessage', { from: 'admin', message: 'Welcome to the chat.' })
+  socket.broadcast.emit('newMessage', { from: 'admin', message: 'New user has entered the chat room.' })
+
   socket.on('createMessage', data => {
     const newData = { ...data, createAt: new Date() }
     socket.broadcast.emit('newMessage', newData) // this will emit any item emitted with `createMessage` to everyone connected at them time
