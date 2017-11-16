@@ -11,32 +11,18 @@ const app = express()
 const server = http.createServer(app)
 const io = socketIO(server)
 
+import routes from './routes'
+import socketConfiguration from './socketio'
+
 const PORT = process.env.PORT
 const NODE_ENV = process.env.NODE_ENV
 
 app.set('views', path.join(__dirname, '../public', 'views'))
 app.set('view engine', 'pug')
-
 app.use(express.static(publicPath))
 
-app.get('/', (req, res) => {
-  res.render('index.pug', {
-    isDevelopment: NODE_ENV === 'development',
-    title: 'Chat Application'
-  })
-})
-
-io.on('connection', (socket) => {
-  console.log('New user connected to chat server...');
-
-  socket.emit('newMessage', { from: 'admin', message: 'Welcome to the chat.' })
-  socket.broadcast.emit('newMessage', { from: 'admin', message: 'New user has entered the chat room.' })
-
-  socket.on('createMessage', data => {
-    const newData = { ...data, createAt: new Date() }
-    socket.broadcast.emit('newMessage', newData) // this will emit any item emitted with `createMessage` to everyone connected at them time
-  })
-})
+routes(app)
+socketConfiguration(io)
 
 server.listen(PORT, () => {
   if (NODE_ENV !== 'production') {
