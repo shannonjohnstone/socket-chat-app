@@ -9,7 +9,7 @@ export default function (io) {
     socket.emit(NEW_MESSAGE, generateMessage(ADMIN, ADMIN_WELCOME_MESSAGE))
     socket.broadcast.emit(NEW_MESSAGE, generateMessage(ADMIN, NEW_USER_ENTERED_MESSAGE))
     socket.on(CREATE_MESSAGE, (data, cb) => {
-      socket.broadcast.emit(NEW_MESSAGE, generateMessage(data.from, data.text))
+      io.emit(NEW_MESSAGE, generateMessage(data.from, data.text))
       cb('This is from the server')
     })
   })
