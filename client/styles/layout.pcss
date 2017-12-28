@@ -1,0 +1,30 @@
+.l-container {
+  max-width: 960px;
+  margin: 0 auto;
+}
+
+.l-footer {
+  top: 95%;
+  min-height: 10%;
+  width: 100%;
+  position: absolute;
+  border-top: 1px solid #ccc;
+  font-weight: 700;
+}
+
+@mixin apply-bg-gradient l-main-header, $theme-color-primary, $theme-color-sub {
+    padding: 100px 0;
+    margin-bottom: 100px;
+}
+
+.l-h1-reveresed {
+  color: white;
+  font-size: 1.5rem;
+  font-weight: 100;
+}
+
+@media (min-width: $small-viewport) {
+  .l-h1-reveresed {
+    font-size: 3em;
+  }
+}
