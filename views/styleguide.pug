@@ -1,0 +1,19 @@
+extends layout.pug
+include ./mixins/styleguide/form-elements
+include ./mixins/styleguide/buttons
+include ./mixins/styleguide/grid-example
+
+block main
+  div.l-container
+    section.row.l-section
+      h1='Form elements'
+      div.col-sm-12
+        +formElements
+    section.row.l-section
+      h1='Buttons'
+      div.col-sm-12
+        +buttons
+    section.row.l-section
+      h1='Grid'
+      div.col-sm-12
+        +grid
