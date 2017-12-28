@@ -1,15 +1,7 @@
 include ./form/inputAddonButton.pug
 
 mixin messageFormSimple
-  form
-    div.c-form-group
-      +inputAddonButton('col-sm-12', 'Message...')
-    div.c-form-group
-      label='Test label'
-      input.c-form-group__input.c-form-group__input--sm
-    div.c-form-group
-      label='Test label'
-      input.c-form-group__input.c-form-group__input--med
-    div.c-form-group
-      label='Test label 2'
-      input.c-form-group__input
+  form#message-form
+    fieldset.l-fieldset
+      div.c-form-group
+        +inputAddonButton('col-sm-12', 'Message...')

@@ -10,6 +10,10 @@ html
     div.l-main-header
       div.l-container
         h1.l-h1-reveresed=welcome
+        block mainnav
+          nav.nav.c-nav-main
+            a(href='/' class="c-nav-main__item") Home
+            a(href='documentation' class="c-nav-main__item") Documentation
     block main
       body
         div.l-container
@@ -18,12 +22,9 @@ html
               div.row
                 div.col.col-sm-12.c-chat-window
               +messageFormSimple
-              button(class="c-button") Standard
-              button(class="c-button c-button--primary") Primary
     block foot
       footer.l-footer
         div.l-container
           p='chatty ©2017'
-          a(href="grid-example") Grid example
     block scripts
       script(src='main.js')
