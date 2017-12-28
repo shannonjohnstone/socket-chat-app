@@ -4,14 +4,15 @@
   "description": "Socket IO chat appliation",
   "main": "index.js",
   "scripts": {
-    "babel-node": "babel-node --presets=latest,stage-0 --plugins=transform-object-rest-spread",
-    "compile-dev-frontend": "babel --no-babelrc ./public/js/index.js -w -o ./public/local-dist/index.js --presets=latest,stage-0 --plugins=transform-object-rest-spread",
-    "start-dev-server": "nodemon --exec npm run babel-node -- ./server",
-    "prepare-dev": "mkdir -p ./public/local-dist",
-    "start-dev": "npm-run-all --parallel prepare-dev compile-dev-frontend start-dev-server",
+    "start:dev": "npm-run-all --parallel clean:dist start:dev:frontend start:dev:server",
+    "start:dev:frontend": "webpack --watch",
+    "start:dev:server": "nodemon --exec npm run babel-node -- ./server/index.js",
+    "build": "webpack && npm run build:server",
+    "build:server": "babel server/ -d dist/server --copy-files",
     "start": "node ./dist/server",
-    "build": "babel server/ -d dist/server --copy-files && babel public -d dist/public --copy-files",
-    "test": "jest --watch"
+    "babel-node": "babel-node --presets=latest,stage-0 --plugins=transform-object-rest-spread",
+    "test": "jest --watch",
+    "clean:dist": "rm -rf dist"
   },
   "author": "Shannon Johnstone",
   "license": "MIT",
@@ -22,12 +23,33 @@
     "babel-preset-stage-0": "^6.24.1",
     "express": "^4.16.2",
     "morgan": "^1.9.0",
-    "pug": "^2.0.0-rc.4",
     "socket.io": "^2.0.4"
   },
   "devDependencies": {
+    "babel-plugin-transform-es2015-modules-commonjs": "^6.26.0",
+    "babel-preset-env": "^1.6.0",
+    "copy-webpack-plugin": "^4.2.1",
+    "css-loader": "^0.28.7",
+    "extract-text-webpack-plugin": "^3.0.2",
+    "html-webpack-plugin": "^2.30.1",
+    "html-webpack-pug-plugin": "^0.2.1",
+    "html-webpack-template-pug": "^1.1.1",
     "jest": "^21.2.1",
+    "node-sass": "^4.7.2",
     "npm-run-all": "^4.1.1",
-    "rimraf": "^2.6.2"
+    "postcss-cssnext": "^3.0.2",
+    "postcss-custom-media": "^6.0.0",
+    "postcss-import": "^11.0.0",
+    "postcss-loader": "^2.0.9",
+    "postcss-mixins": "^6.2.0",
+    "postcss-simple-vars": "^4.1.0",
+    "pug": "^2.0.0-rc.4",
+    "pug-loader": "^2.3.0",
+    "rimraf": "^2.6.2",
+    "sass-loader": "^6.0.6",
+    "style-loader": "^0.19.1",
+    "webpack": "^3.8.1",
+    "webpack-dev-middleware": "^1.12.0",
+    "webpack-dev-server": "^2.9.4"
   }
 }

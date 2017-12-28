@@ -4,24 +4,28 @@ import path from 'path'
 import http from 'http'
 import express from 'express'
 import pug from 'pug'
+const webpack = require('webpack')
 import socketIO from 'socket.io'
+import routes from './routes'
+import socketConfiguration from './socketio'
 
-const publicPath = path.join(__dirname, '../public')
+// const webpackConfig from '../webpack.config'
+
+const publicPath = path.join(__dirname, '../dist')
+const PORT = process.env.PORT
+const NODE_ENV = process.env.NODE_ENV
+
 const app = express()
 const server = http.createServer(app)
 const io = socketIO(server)
 
-import routes from './routes'
-import socketConfiguration from './socketio'
-
-const PORT = process.env.PORT
-const NODE_ENV = process.env.NODE_ENV
-
-app.set('views', path.join(__dirname, '../public', 'views'))
+app.set('views', path.join(__dirname, '../views'))
 app.set('view engine', 'pug')
-app.use(express.static(publicPath))
 
+console.log('TEST');
+app.use(express.static(publicPath))
 routes(app)
+
 socketConfiguration(io)
 
 server.listen(PORT, () => {

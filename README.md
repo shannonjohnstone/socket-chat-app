@@ -1,5 +1,7 @@
 # socket-chat-app
 
+#### *Note: you must at the moment use npm for installation of packages as there seems to be an issue installing socket.io with yarn*
+
 ### Socket IO chat application (server and UI)
 
 This is a self learning exercise project for learning Socket.io and improving node skills.
