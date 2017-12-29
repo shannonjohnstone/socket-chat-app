@@ -1,0 +1,11 @@
+include ./messageFormSimple
+
+mixin chatWindow
+  div.l-container
+    block content
+      section
+        div.row
+          div.col.col-sm-12.c-chat-window
+            ol#displayed-messages
+        +messageFormSimple
+        button(class="c-button c-button--primary" id="send-location") Send location
