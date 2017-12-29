@@ -1,4 +1,4 @@
-include ./mixins/messageFormSimple
+include ./mixins/chat-window
 
 html
   head
@@ -16,13 +16,10 @@ html
             a(href='documentation' class="c-nav-main__item") Documentation
     block main
       body
-        div.l-container
-          block content
-            section
-              div.row
-                div.col.col-sm-12.c-chat-window
-                  ol#displayed-messages
-              +messageFormSimple
+        div.c-page-referral
+          div.l-container#c-page-referral__content
+            p='This is a referral'
+        +chatWindow
     block foot
       footer.l-footer
         div.l-container

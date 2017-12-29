@@ -1,4 +1,3 @@
-import { NEW_MESSAGE, CREATE_MESSAGE } from '../constants'
 import { getElementById, clearInputValue, getInputValue, validation } from './helpers'
 
 export const messageFormSubmitEventListener = (socket, cb) => {
