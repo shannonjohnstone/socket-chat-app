@@ -2,6 +2,7 @@
 export const NEW_MESSAGE = 'newMessage'
 export const CREATE_MESSAGE = 'createMessage'
 export const CREATE_LOCATION_MESSAGE = 'createLocationMessage'
+export const NEW_LOCATION_MESSAGE = 'newLocationMessage'
 
 // users
 export const ADMIN = 'admin'

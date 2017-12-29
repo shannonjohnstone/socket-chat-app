@@ -1,7 +1,7 @@
-import { appendChildToIdElement } from '../helpers'
+import { appendChildTextElementToIdElement } from '../helpers'
 
 export function setPageReferral(referral) {
-  appendChildToIdElement({
+  appendChildTextElementToIdElement({
     id: 'c-page-referral__content',
     newElement: 'p',
     newElementContent: referral

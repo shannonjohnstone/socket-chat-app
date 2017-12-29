@@ -1,5 +1,4 @@
 import * as constants from '../../config/constants'
-console.log(constants, 'constants server');
 const env = process.env.NODE_ENV || constants.DEVELOPMENT
 
 if (env === constants.DEVELOPMENT) {

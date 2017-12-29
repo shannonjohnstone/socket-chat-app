@@ -1,20 +1,39 @@
 const socket = io();
 import { messageFormSubmitEventListener } from './formLib'
-import { appendChildToIdElement } from './helpers'
+import { appendChildTextElementToIdElement, appendChildElementToIdElement, createAtagElement, log } from './helpers'
 import '../styles/main.pcss'
 import * as constants from '../../config/constants'
 import { createMessage } from './socketLib'
 import './geoLocationLib'
 
 (function() {
-  socket.on('connect', () => console.log('Connected to server'))
-  socket.on('disconnect', () => console.log('Disconnect from server'))
+  log.setLevel('info')
+  socket.on('connect', () => log.info('Connected to server'))
+  socket.on('disconnect', () => log.info('Disconnect from server'))
+
+  // general message coming in from server to append to chat window
   socket.on(constants.NEW_MESSAGE, (data) => {
-    console.log(data, 'newMessage from the server....')
-    appendChildToIdElement({
+    log.info(data, 'newMessage from the server....')
+    appendChildTextElementToIdElement({
       id: 'displayed-messages',
       newElement: 'li',
       newElementContent: data.text
+    })
+  })
+
+  // location message coming in from server to append to chat window as a link
+  socket.on(constants.NEW_LOCATION_MESSAGE, (data) => {
+    log.info(data, 'NEW_LOCATION_MESSAGE from the server....')
+
+    const aTag = createAtagElement({
+      attributes: [{ name: 'href', value: data.url, }, { name: 'target', value: '_blank' }],
+      innerHTML: 'My current location'
+    })
+
+    appendChildElementToIdElement({
+      id: 'displayed-messages',
+      newElement: 'li',
+      newChildElement: aTag
     })
   })
 
