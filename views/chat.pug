@@ -1,0 +1,25 @@
+extends layout.pug  
+include ./mixins/chat-window
+
+block aside
+  aside.c-sidebar
+    div.c-sidebar__icon-items
+      ul.list
+        li.list__item='+'
+        li.list__item='+'
+block main
+  main.l-main
+    block header
+      div.l-main-header.l-main-header--small.l-main-header--fixed
+        block mainnav
+          nav.c-nan.c-nav-chat
+            a(href='/' class="c-nav__item") Home
+            a(href='/chat' class="c-nav__item is-active") Chat
+            a(href='documentation' class="c-nav__item") Documentation
+    block referral
+      div.c-referral.c-chat-referral
+        div.l-container#c-page-referral__content
+          p='This is a referral'
+    block content
+      +chatWindow
+  block foot
