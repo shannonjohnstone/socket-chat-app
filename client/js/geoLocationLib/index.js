@@ -9,11 +9,14 @@ if (locationBtn !== null) {
     if (!navigator.geolocation) return setPageReferral('Geolocation is not supported by your browser.')
 
     locationBtn.setAttribute('disabled', 'disabled')
+    locationBtn.innerHTML = 'Sending location...'
     navigator.geolocation.getCurrentPosition(({ coords: { latitude, longitude }}) =>{
       socket.emit(constants.CREATE_LOCATION_MESSAGE, { latitude, longitude })
       locationBtn.removeAttribute('disabled')
+      locationBtn.innerHTML = 'Send location'
     }, () => {
       locationBtn.removeAttribute('disabled')
+      locationBtn.innerHTML = 'Send location'
       setPageReferral('Unable to fetch location')
     })
   })
