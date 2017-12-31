@@ -10,8 +10,9 @@ if (locationBtn !== null) {
 
     locationBtn.setAttribute('disabled', 'disabled')
     locationBtn.innerHTML = 'Sending location...'
-    navigator.geolocation.getCurrentPosition(({ coords: { latitude, longitude }}) =>{
-      socket.emit(constants.CREATE_LOCATION_MESSAGE, { latitude, longitude })
+
+    navigator.geolocation.getCurrentPosition(({ coords: { latitude, longitude }}) => {
+      socket.emit(constants.CREATE_LOCATION_MESSAGE, { from: 'User', latitude, longitude })
       locationBtn.removeAttribute('disabled')
       locationBtn.innerHTML = 'Send location'
     }, () => {

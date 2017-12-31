@@ -17,7 +17,7 @@ import './geoLocationLib'
     appendChildTextElementToIdElement({
       id: 'displayed-messages',
       newElement: 'li',
-      newElementContent: data.text
+      newElementContent: `${data.from}: ${data.text}`
     })
   })
 

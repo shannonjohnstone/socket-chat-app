@@ -5,7 +5,7 @@ export const messageFormSubmitEventListener = (socket, cb) => {
     e.preventDefault()
     const message = getInputValue('message')
     if (!validation.required(message)) return
-    cb(socket, { from: 'Shannon', message })
+    cb(socket, { from: 'User', message })
     clearInputValue('message')
   })
 }
