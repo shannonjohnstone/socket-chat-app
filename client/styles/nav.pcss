@@ -1,4 +1,4 @@
-.c-nav-main__item {
+.c-nav__item {
   color: #ffffff;
   margin-left: 10px;
   font-size: 14px;
@@ -11,7 +11,17 @@
     border-bottom: 1px solid #ffffff;
   }
 
+  &:nth-child(1) {
+    margin-left: 0px;
+  }
+
   &:hover:not(.is-active) {
     opacity: 0.5;
   }
+}
+
+.c-nav-chat {
+  margin-left: 10px;
+  position: relative;
+  z-index: 10;
 }

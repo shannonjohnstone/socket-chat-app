@@ -39,4 +39,11 @@ import './geoLocationLib'
 
   messageFormSubmitEventListener(socket, createMessage)
 
+  // NOTE: POC, will need cleanup and moving
+  const sidebar = document.querySelector('.c-sidebar')
+  sidebar.addEventListener('click', function() {
+    const isOpenBool = this.className.split(' ').includes('is-open')
+    if (isOpenBool) this.classList.remove('is-open')
+    else this.classList.add('is-open')
+  })
 })()

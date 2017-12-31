@@ -20,6 +20,13 @@ export default function (app) {
     })
   })
 
+  app.get('/chat', (req, res) => {
+    res.render('chat.pug', {
+      isDevelopment: process.env.NODE_ENV === 'development',
+      // welcome: 'Let\'s chat'
+    })
+  })
+
   app.get('/room-one2', (req, res) => {
     res.render('room-one.pug', {
       isDevelopment: process.env.NODE_ENV === 'development',

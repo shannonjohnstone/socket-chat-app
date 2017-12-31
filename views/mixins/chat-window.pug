@@ -1,11 +1,9 @@
 include ./messageFormSimple
 
 mixin chatWindow
-  div.l-container
-    block content
-      section
-        div.row
-          div.col.col-sm-12.c-chat-window
-            ol#displayed-messages
-        +messageFormSimple
-        button(class="c-button c-button--primary" id="send-location") Send location
+  section.c-chat
+    div
+      ol.c-chat__list#displayed-messages
+    div.c-chat__buttons
+      +messageFormSimple
+      button(class="c-button c-button--primary" id="send-location") Send location

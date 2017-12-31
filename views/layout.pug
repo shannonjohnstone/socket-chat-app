@@ -7,22 +7,23 @@ html
     link(href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700,800|Roboto:100,300,400,500,700" rel="stylesheet")
     link(href="styles.css" rel="stylesheet")
   body
-    div.l-main-header
-      div.l-container
-        h1.l-h1-reveresed=welcome
-        block mainnav
-          nav.nav.c-nav-main
-            a(href='/' class="c-nav-main__item") Home
-            a(href='documentation' class="c-nav-main__item") Documentation
+    block aside
     block main
-      body
-        div.c-page-referral
-          div.l-container#c-page-referral__content
-            p='This is a referral'
-        +chatWindow
-    block foot
-      footer.l-footer
-        div.l-container
-          p='chatty ©2017'
+      main.l-main
+        block header
+          div.l-main-header
+            div.l-container
+              h1.l-h1-reveresed=welcome
+              block mainnav
+                nav.c-nav
+                  a(href='/' class="c-nav__item") Home
+                  a(href='chat' class="c-nav__item") Chat
+                  a(href='documentation' class="c-nav__item") Documentation
+        block referral
+        block content
+      block foot
+        footer.l-footer
+          div.l-container
+            p='chatty ©2017'
     block scripts
       script(src='main.js')
