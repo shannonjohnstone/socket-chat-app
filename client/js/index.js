@@ -1,6 +1,7 @@
 const socket = io();
+import moment from 'moment'
 import { messageFormSubmitEventListener } from './formLib'
-import { appendChildTextElementToIdElement, appendChildElementToIdElement, createAtagElement, log } from './helpers'
+import { appendChildTextElementToIdElement, appendChildElementsToIdElement, createAtagElement, createElement, createTextNode, log } from './helpers'
 import '../styles/main.pcss'
 import * as constants from '../../config/constants'
 import { createMessage } from './socketLib'
@@ -13,11 +14,15 @@ import './geoLocationLib'
 
   // general message coming in from server to append to chat window
   socket.on(constants.NEW_MESSAGE, (data) => {
+    const formattedTime = moment(data.createdAt).format('h:mm:a')
+    // const formattedTime = "00:00:00"
     log.info(data, 'newMessage from the server....')
-    appendChildTextElementToIdElement({
+    const nameAndTime = createElement('p')
+    nameAndTime.appendChild(createTextNode(`${data.from} ${formattedTime}: `))
+    appendChildElementsToIdElement({
       id: 'displayed-messages',
       newElement: 'li',
-      newElementContent: `${data.from}: ${data.text}`
+      newElementsArray: [nameAndTime, createTextNode(data.text)]
     })
   })
 
@@ -30,10 +35,10 @@ import './geoLocationLib'
       innerHTML: 'My current location'
     })
 
-    appendChildElementToIdElement({
+    appendChildElementsToIdElement({
       id: 'displayed-messages',
       newElement: 'li',
-      newChildElement: aTag
+      newElementsArray: [createTextNode(`${data.from}: `), aTag]
     })
   })
 

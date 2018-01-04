@@ -17,9 +17,9 @@ export const appendChildTextElementToIdElement = ({ id, newElement, newElementCo
   getElementById(id).appendChild(node)
 }
 
-export const appendChildElementToIdElement = ({ id, newElement, newChildElement }) => {
+export const appendChildElementsToIdElement = ({ id, newElement, newElementsArray }) => {
   const node = createElement(newElement)
-  node.appendChild(newChildElement)
+  newElementsArray.forEach(element => node.appendChild(element))
   getElementById(id).appendChild(node)
 }
 
