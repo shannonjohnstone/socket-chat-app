@@ -7,6 +7,11 @@ import * as constants from '../../config/constants'
 import { createMessage } from './socketLib'
 import './geoLocationLib'
 
+function scrollToBottom() {
+  const container = document.getElementById('displayed-messages')
+  container.scrollTop = container.scrollHeight - container.clientHeight
+}
+
 (function() {
   log.setLevel('info')
   socket.on('connect', () => log.info('Connected to server'))
@@ -21,9 +26,10 @@ import './geoLocationLib'
     nameAndTime.appendChild(createTextNode(`${data.from} ${formattedTime}: `))
     appendChildElementsToIdElement({
       id: 'displayed-messages',
-      newElement: 'li',
+      newElement: 'div',
       newElementsArray: [nameAndTime, createTextNode(data.text)]
     })
+    scrollToBottom()
   })
 
   // location message coming in from server to append to chat window as a link
@@ -37,9 +43,10 @@ import './geoLocationLib'
 
     appendChildElementsToIdElement({
       id: 'displayed-messages',
-      newElement: 'li',
+      newElement: 'div',
       newElementsArray: [createTextNode(`${data.from}: `), aTag]
     })
+    scrollToBottom()
   })
 
   messageFormSubmitEventListener(socket, createMessage)

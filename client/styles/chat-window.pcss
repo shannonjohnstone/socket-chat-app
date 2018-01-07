@@ -6,13 +6,23 @@
   height: 100%;
   position: relative;
   margin-top: -75px;
+  overflow-x: hidden;
 }
 
 .c-chat__list {
+  display: flex;
+  flex-direction:column;
   position: absolute;
   bottom: 0;
   margin-bottom: 85px;
   margin-left: 10px;
+  height: 100%;
+  width: 100%;
+  overflow: scroll;
+}
+
+.c-chat__list > div:first-child {
+  margin-top: auto;
 }
 
 .c-chat__buttons {

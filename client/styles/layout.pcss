@@ -29,6 +29,8 @@
 @mixin apply-bg-gradient l-main-header, $theme-color-primary, $theme-color-sub {
     padding: 100px 0;
     margin-bottom: 100px;
+    position: relative;
+    z-index: 10;
 }
 
 @mixin apply-bg-gradient l-main-header--small, $theme-color-primary, $theme-color-sub, 100%, -50% {

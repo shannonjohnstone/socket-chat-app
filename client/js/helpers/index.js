@@ -23,4 +23,8 @@ export const appendChildElementsToIdElement = ({ id, newElement, newElementsArra
   getElementById(id).appendChild(node)
 }
 
+export const scrollToBottom = () => {
+  const messages = getElementById('displayed-messages')
+}
+
 export const log = loglevel
