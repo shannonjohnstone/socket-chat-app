@@ -1,4 +1,4 @@
-import * as constants from '../../config/constants'
+import * as constants from '../../constants'
 import { generateMessage, generateLocationMessage } from '../utils/message'
 
 export default function (io) {

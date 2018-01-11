@@ -1,17 +1,11 @@
-require('./config')
-
 import path from 'path'
 import http from 'http'
 import express from 'express'
-import pug from 'pug'
-const webpack = require('webpack')
 import socketIO from 'socket.io'
 import routes from './routes'
 import socketConfiguration from './socketio'
 
-// const webpackConfig from '../webpack.config'
-
-const publicPath = path.join(__dirname, '../dist')
+require('./config')
 const PORT = process.env.PORT
 const NODE_ENV = process.env.NODE_ENV
 
@@ -19,13 +13,15 @@ const app = express()
 const server = http.createServer(app)
 const io = socketIO(server)
 
-app.set('views', path.join(__dirname, '../views'))
-app.set('view engine', 'pug')
+socketConfiguration(io)
 
-console.log('TEST');
-app.use(express.static(publicPath))
+// Serve static
+if (process.env.NODE_ENV === 'production') {
+  app.use(express.static(path.resolve(__dirname, '..', 'build')));
+  app.get('*', (req, res) => res.sendFile(path.resolve(__dirname, '..', 'build', 'index.html')));
+}
+
 routes(app)
-
 socketConfiguration(io)
 
 server.listen(PORT, () => {
