@@ -1,13 +1,20 @@
-/* global io */
-
 import React, { Component } from 'react'
-import { Button, Header, SideMenu, FormInputAddonBtn, ReferralBanner } from './components'
+import { connect } from 'react-redux'
+import { Button, Header, SideMenu, FieldSet, FormGroup, FormInputAddonBtn, ReferralBanner } from './components'
+import { messaging } from './modules'
 
 class Chat extends Component {
-  componentDidMount() {
-    this.socket = io();
-    this.socket.on('connect', () => console.log('Connected to server'))
-    this.socket.on('disconnect', () => console.log('Disconnect from server'))
+  handleSubmit = (e) => {
+    e.preventDefault()
+    messaging.createMessage({ from: 'admin test', message: e.target.message.value })
+  }
+  renderMessages = () => {
+    return this.props.messages.map(message => (
+      <div>
+        <p>{message.from} {message.createAt}</p>
+        <p>{message.text}</p>
+      </div>
+    ))
   }
   render() {
     return [
@@ -22,10 +29,20 @@ class Chat extends Component {
         <ReferralBanner />
         <section className="c-chat">
           <div className="list c-chat__list" id="displayed-messages">
-            <div className="c-chat__buttons">
-              <FormInputAddonBtn />
-              <Button btnText='Location' />
-            </div>
+            {this.renderMessages()}
+          </div>
+          <div className="c-chat__buttons">
+            <form onSubmit={this.handleSubmit}>
+              <FieldSet>
+                <FormGroup
+                  formInput={FormInputAddonBtn}
+                  name="message"
+                  labelText="Message text"
+                  labelHidden
+                />
+              </FieldSet>
+            </form>
+            <Button btnText='Location' />
           </div>
         </section>
       </main>
@@ -33,4 +50,8 @@ class Chat extends Component {
   }
 }
 
-export default Chat;
+const mapStateToProps = (store) => ({
+  messages: store.app.messages
+})
+
+export default connect(mapStateToProps)(Chat);

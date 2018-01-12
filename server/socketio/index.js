@@ -18,6 +18,7 @@ export default function (io) {
 
     // general message, goes to all users
     socket.on(constants.CREATE_MESSAGE, (data, cb) => {
+      console.log(data, cb, "data, cb");
       io.emit(constants.NEW_MESSAGE, generateMessage(data.from, data.text))
       cb('This is from the server')
     })
