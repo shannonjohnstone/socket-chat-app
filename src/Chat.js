@@ -2,11 +2,14 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { Button, Header, SideMenu, FieldSet, FormGroup, FormInputAddonBtn, ReferralBanner } from './components'
 import { messaging } from './modules'
+import { clearInputValue } from './helpers/form'
 
 class Chat extends Component {
   handleSubmit = (e) => {
+    const inputName = 'message'
     e.preventDefault()
-    messaging.createMessage({ from: 'admin test', message: e.target.message.value })
+    messaging.createMessage({ from: 'admin test', message: e.target[inputName].value })
+    clearInputValue(inputName)
   }
   renderMessages = () => {
     return this.props.messages.map(message => (

@@ -3,29 +3,20 @@ import * as constants from '../../constants'
 import moment from 'moment';
 
 let socket = undefined
-// socket.on('disconnect', () => console.log('Disconnect from server'))
 
-const init = (dispatch) => {
+console.log(io, 'io outside');
+const init = (cb) => {
+  console.log(io, 'io init');
   socket = io()
   socket.on('connect', () => console.log('Connected to server'))
-  listenForMessages(dispatch)
+  // socket.on('disconnect', () => console.log('Disconnect from server'))
+  listenForMessages(cb)
 }
 
-const listenForMessages = (dispatch) => {
+const listenForMessages = (cb) => {
   socket.on(constants.NEW_MESSAGE, (data) => {
-    const formatedData = {
-      ...data,
-      createAt: moment(data.createAt).format('h:mm:a')
-    }
-    dispatch({ type: 'NEW_MESSAGE', data: formatedData })
-    // const nameAndTime = createElement('p')
-    // nameAndTime.appendChild(createTextNode(`${data.from} ${formattedTime}: `))
-    // appendChildElementsToIdElement({
-    //   id: 'displayed-messages',
-    //   newElement: 'div',
-    //   newElementsArray: [nameAndTime, createTextNode(data.text)]
-    // })
-    // scrollToBottom()
+    const formatedData = { ...data, createAt: moment(data.createAt).format('h:mm:a') }
+    cb(formatedData)
   })
 }
 
