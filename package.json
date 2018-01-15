@@ -63,6 +63,7 @@
     "babel-loader": "^7.1.2",
     "babel-plugin-transform-es2015-modules-commonjs": "^6.26.0",
     "babel-preset-env": "^1.6.0",
+    "connect-history-api-fallback": "^1.5.0",
     "copy-webpack-plugin": "^4.2.1",
     "css-loader": "^0.28.7",
     "extract-text-webpack-plugin": "^3.0.2",
@@ -76,22 +77,25 @@
     "postcss-mixins": "^6.2.0",
     "postcss-nesting": "^4.2.1",
     "postcss-simple-vars": "^4.1.0",
+    "react-hot-loader": "^4.0.0-beta.14",
     "redux-devtools-dock-monitor": "^1.1.3",
     "redux-devtools-log-monitor": "^1.4.0",
     "rimraf": "^2.6.2",
     "sass-loader": "^6.0.6",
     "webpack": "^3.8.1",
     "webpack-dev-middleware": "^1.12.0",
-    "webpack-dev-server": "^2.9.4"
+    "webpack-dev-server": "^2.9.4",
+    "webpack-hot-middleware": "^2.21.0"
   },
   "scripts": {
     "start": "node scripts/start.js",
+    "start-ui": "NODE_ENV=development npm run babel-node -- ./server-ui/index.js",
+    "start-ui-prod": "NODE_ENV=production npm run babel-node -- ./server-ui/index.js",
     "build": "node scripts/build.js",
     "test": "node scripts/test.js --env=jsdom",
     "dev:server": "NODE_ENV=development nodemon --exec npm run babel-node -- ./server/index.js",
     "babel-node": "babel-node --presets=latest,stage-0 --plugins=transform-object-rest-spread"
   },
-  "proxy": "http://localhost:3001/",
   "jest": {
     "collectCoverageFrom": [
       "src/**/*.{js,jsx,mjs}"

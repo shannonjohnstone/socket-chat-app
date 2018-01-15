@@ -7,10 +7,23 @@ import './index.css';
 import App from './App';
 // import registerServiceWorker from './registerServiceWorker';
 
-const store = configureStore()
+export const store = configureStore()
 
-ReactDOM.render(
-  <Provider store={store}>
-    <App />
-  </Provider>, document.getElementById('root'));
+function render(RootComponent) {
+  ReactDOM.render(
+    <Provider store={store}>
+      <RootComponent />
+    </Provider>, document.getElementById('root')
+  );
+}
+
+render(App)
+
+if (module.hot) {
+  module.hot.accept('./App', () => {
+    const NextRoot = require('./App').default
+    console.log(NextRoot, 'NextRoot');
+    render(NextRoot)
+  })
+}
 // registerServiceWorker();

@@ -1,23 +1,17 @@
-
 import React from 'react'
-import { connect } from 'react-redux'
 import Routes from './routing/Routes'
+import { store } from './index'
 import { messaging } from './modules/messaging'
-// import moment from 'moment'
+import { scrollToBottom } from './helpers/scrolling'
 
-function scrollToBottom() {
-  const container = document.getElementById('displayed-messages')
-  if (container) container.scrollTop = container.scrollHeight - container.clientHeight
-}
-
-const App = ({ dispatch }) => {
+const App = () => {
   const handleNewMessage = (data) => {
-    dispatch({ type: 'NEW_MESSAGE', data })
-    scrollToBottom()
+    store.dispatch({ type: 'NEW_MESSAGE', data })
+    scrollToBottom('displayed-messages')
   }
-    
+
   messaging.init(handleNewMessage)
   return <Routes />
 }
 
-export default connect()(App);
+export default App;

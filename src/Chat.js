@@ -3,6 +3,7 @@ import { connect } from 'react-redux'
 import { Button, Header, SideMenu, FieldSet, FormGroup, FormInputAddonBtn, ReferralBanner } from './components'
 import { messaging } from './modules'
 import { clearInputValue } from './helpers/form'
+import { capitalizeFirstLetter } from './helpers/strings'
 
 class Chat extends Component {
   handleSubmit = (e) => {
@@ -13,8 +14,8 @@ class Chat extends Component {
   }
   renderMessages = () => {
     return this.props.messages.map(message => (
-      <div>
-        <p>{message.from} {message.createAt}</p>
+      <div className="c-chat__content">
+        <p><span className="c-chat__name">{capitalizeFirstLetter(message.from)}</span> <span className="c-chat__time">{message.createAt}</span></p>
         <p>{message.text}</p>
       </div>
     ))
@@ -32,6 +33,9 @@ class Chat extends Component {
         <ReferralBanner />
         <section className="c-chat">
           <div className="list c-chat__list" id="displayed-messages">
+            <div className="c-chat__content">
+              <h1 className="c-chat__room-name">Technical Chat</h1>
+            </div>
             {this.renderMessages()}
           </div>
           <div className="c-chat__buttons">

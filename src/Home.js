@@ -1,12 +1,13 @@
-import React, { Component } from 'react'
+import React from 'react'
+import { connect } from 'react-redux'
 import LayoutMain from './LayoutMain'
 
 const Home = () => (
   <LayoutMain
-    title="Welcome"
+    title="Welcome to the Home route"
   >
-    <p>This is the Home page.</p>
+    <p>This is the Home page, setup is now working <span role="img" aria-label="Thumbs up">👍</span> .</p>
   </LayoutMain>
 )
 
-export default Home;
+export default connect()(Home);
