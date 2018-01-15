@@ -14,3 +14,6 @@ In the case of this application we have used the `eject` script so that all thos
 The main reason being is that `webpack-dev-server` has a hot-reloading configuration but that does not seem to work with `socket.io`. The result of this being that when it tried to reload the connection for `socket.io` fails and then discounts and then causing the socket instance to be undefined breaking the application.
 
 So we have setup this application to work with `webpack-dev-middleware` and `webpack-hot-middleware` to give the same results but to also not break with the hot module replacement.
+
+## **Current API being used**
+https://github.com/shannonjohnstone/chatty-api
