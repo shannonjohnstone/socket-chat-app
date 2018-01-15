@@ -88,12 +88,10 @@
     "webpack-hot-middleware": "^2.21.0"
   },
   "scripts": {
-    "start": "node scripts/start.js",
-    "start-ui": "NODE_ENV=development npm run babel-node -- ./server-ui/index.js",
-    "start-ui-prod": "NODE_ENV=production npm run babel-node -- ./server-ui/index.js",
+    "start": "NODE_ENV=development npm run babel-node -- ./server/index.js",
+    "start:prod": "NODE_ENV=production npm run babel-node -- ./server/index.js",
     "build": "node scripts/build.js",
     "test": "node scripts/test.js --env=jsdom",
-    "dev:server": "NODE_ENV=development nodemon --exec npm run babel-node -- ./server/index.js",
     "babel-node": "babel-node --presets=latest,stage-0 --plugins=transform-object-rest-spread"
   },
   "jest": {

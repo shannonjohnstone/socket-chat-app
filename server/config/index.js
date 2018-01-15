@@ -1,4 +1,4 @@
-import * as constants from '../../constants'
+import * as constants from './constants'
 const env = process.env.NODE_ENV || constants.DEVELOPMENT
 
 if (env === constants.DEVELOPMENT) {
