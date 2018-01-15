@@ -6,7 +6,6 @@ export const generateMessage = (from, text) => {
     text,
     createAt: moment().valueOf()
   }
-  console.log(object, 'generateMessage');
   return object
 }
 

@@ -1,31 +1,21 @@
-/* global io */
+import io from 'socket.io-client' // Non proxy version
 import * as constants from '../../constants'
 import moment from 'moment';
 
 let socket = undefined
-// socket.on('disconnect', () => console.log('Disconnect from server'))
 
-const init = (dispatch) => {
-  socket = io()
+// console.log(io, 'io outside');
+const init = (cb) => {
+  socket = io('http://localhost:3001', { path: '/chatty/socket.io' }) // Non proxy version
   socket.on('connect', () => console.log('Connected to server'))
-  listenForMessages(dispatch)
+  listenForMessages(cb)
 }
 
-const listenForMessages = (dispatch) => {
+const listenForMessages = (cb) => {
   socket.on(constants.NEW_MESSAGE, (data) => {
-    const formatedData = {
-      ...data,
-      createAt: moment(data.createAt).format('h:mm:a')
-    }
-    dispatch({ type: 'NEW_MESSAGE', data: formatedData })
-    // const nameAndTime = createElement('p')
-    // nameAndTime.appendChild(createTextNode(`${data.from} ${formattedTime}: `))
-    // appendChildElementsToIdElement({
-    //   id: 'displayed-messages',
-    //   newElement: 'div',
-    //   newElementsArray: [nameAndTime, createTextNode(data.text)]
-    // })
-    // scrollToBottom()
+    console.log('NEW_MESSAGE...');
+    const formatedData = { ...data, createAt: moment(data.createAt).format('h:mm:a') }
+    cb(formatedData)
   })
 }
 
