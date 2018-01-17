@@ -1,11 +1,11 @@
-import React from 'react'
-import { Link } from 'react-router-dom'
+import React from 'react';
+import { string } from 'prop-types';
+import { NavLink } from 'react-router-dom';
 
-const DocumentationMain = ({ match }) => {
-  console.log(match, 'match');
-  return (
-    <Link to={`${match.url}/styleguide`}>Styleguide</Link>
-  )
-}
+const DocumentationMain = ({ match }) => <NavLink to={`${match.url}/styleguide`}>Styleguide</NavLink>;
+
+DocumentationMain.propTypes = {
+  match: string.isRequired
+};
 
 export default DocumentationMain;

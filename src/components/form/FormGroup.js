@@ -1,17 +1,28 @@
-import React from 'react'
-import classnames from 'classnames'
+import React from 'react';
+import { bool, func, string } from 'prop-types';
+import classnames from 'classnames';
 
 const FormGroup = (props) => {
-  const { formInput: FormComponent, labelText, name, labelHidden } = props
-  const labelClassnames = classnames(
-    { 'visuallyhidden': labelHidden }
-  )
+  const { formInput: FormComponent, labelText, name, labelHidden } = props;
+  const labelClassnames = classnames({ visuallyhidden: labelHidden });
+
   return (
     <div className="c-form-group">
-      <label className={labelClassnames} for={name} aria-label={labelText}>{labelText}</label>
+      <label className={labelClassnames} htmlFor={name} aria-label={labelText}>{labelText}</label>
       <FormComponent {...props} />
     </div>
-  )
-}
+  );
+};
 
-export default FormGroup
+FormGroup.defaultProps = {
+  labelHidden: false
+};
+
+FormGroup.propTypes = {
+  formInput: func.isRequired,
+  labelText: string.isRequired,
+  name: string.isRequired,
+  labelHidden: bool
+};
+
+export default FormGroup;

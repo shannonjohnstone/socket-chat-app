@@ -1,5 +1,5 @@
-import React from 'react'
-import { Header } from './components'
+import React from 'react';
+import { Header } from './components';
 
 const LayoutMain = props => [
   <main className="l-main">
@@ -15,6 +15,6 @@ const LayoutMain = props => [
       <p>chatty ©2017</p>
     </div>
   </footer>
-]
+];
 
 export default LayoutMain;

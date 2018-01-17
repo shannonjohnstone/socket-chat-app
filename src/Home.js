@@ -1,6 +1,6 @@
-import React from 'react'
-import { connect } from 'react-redux'
-import LayoutMain from './LayoutMain'
+import React from 'react';
+import { connect } from 'react-redux';
+import LayoutMain from './LayoutMain';
 
 const Home = () => (
   <LayoutMain
@@ -8,6 +8,6 @@ const Home = () => (
   >
     <p>This is the Home page, setup is now working <span role="img" aria-label="Thumbs up">👍</span> .</p>
   </LayoutMain>
-)
+);
 
 export default connect()(Home);

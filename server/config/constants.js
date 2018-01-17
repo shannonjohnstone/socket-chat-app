@@ -1,1 +1,1 @@
-export const DEVELOPMENT = 'development'
+export const DEVELOPMENT = 'development';

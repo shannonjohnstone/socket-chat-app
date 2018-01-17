@@ -17,3 +17,12 @@ So we have setup this application to work with `webpack-dev-middleware` and `web
 
 ## **Current API being used**
 https://github.com/shannonjohnstone/chatty-api
+
+## eslint
+We are using airbnb eslint styleguide as a base.
+
+We are currently implementing some of our own custome rules in the `.eslintrc` file. One of these rules is the following
+
+`react/no-typos`
+
+The reason for doing so at the moment is, https://github.com/yannickcr/eslint-plugin-react/issues/1389

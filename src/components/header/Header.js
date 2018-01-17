@@ -1,19 +1,16 @@
-import React from 'react'
-import { boolean, string } from 'prop-types'
-import classnames from 'classnames'
-import Navigation from '../navigation/Navigation'
-import { navigationConfig } from '../navigation/navigation.config'
+import React from 'react';
+import { bool, string } from 'prop-types';
+import classnames from 'classnames';
+import Navigation from '../navigation/Navigation';
+import { navigationConfig } from '../navigation/navigation.config';
 
 const Header = ({ size, position, title, container, navType }) => {
-  console.log(container, 'container');
   const headerClassNames = classnames(
     'l-main-header',
     { 'l-main-header--small': size === 'small' },
     { 'l-main-header--fixed': position === 'fixed' }
-  )
-  const containerClass = classnames(
-    { 'l-container': container !== false },
-  )
+  );
+  const containerClass = classnames({ 'l-container': container !== false });
   return (
     <header className={headerClassNames}>
       <div className={containerClass}>
@@ -21,16 +18,19 @@ const Header = ({ size, position, title, container, navType }) => {
         <Navigation navigationConfig={navigationConfig} navType={navType} />
       </div>
     </header>
-  )
-}
+  );
+};
 
-// Header.defaultProps = {
-//   title: 'Welcome'
-// }
+Header.defaultProps = {
+  title: null
+};
 
 Header.propTypes = {
+  size: string.isRequired,
+  position: string.isRequired,
   title: string,
-  container: boolean
-}
+  container: bool.isRequired,
+  navType: string.isRequired
+};
 
-export default Header
+export default Header;

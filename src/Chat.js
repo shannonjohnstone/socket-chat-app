@@ -1,16 +1,22 @@
-import React, { Component } from 'react'
-import { connect } from 'react-redux'
-import { Button, Header, SideMenu, FieldSet, FormGroup, FormInputAddonBtn, ReferralBanner } from './components'
-import { messaging } from './modules'
-import { clearInputValue } from './helpers/form'
-import { capitalizeFirstLetter } from './helpers/strings'
+import React, { Component } from 'react';
+import { arrayOf, object } from 'prop-types';
+import { connect } from 'react-redux';
+import { Button, Header, SideMenu, FieldSet, FormGroup, FormInputAddonBtn, ReferralBanner } from './components';
+import { messaging } from './modules';
+import { clearInputValue } from './helpers/form';
+import { capitalizeFirstLetter } from './helpers/strings';
 
 class Chat extends Component {
   handleSubmit = (e) => {
-    const inputName = 'message'
-    e.preventDefault()
-    messaging.createMessage({ from: 'admin test', message: e.target[inputName].value })
-    clearInputValue(inputName)
+    const inputName = 'message';
+    e.preventDefault();
+    messaging.createMessage({ from: 'admin test', message: e.target[inputName].value });
+    clearInputValue(inputName);
+  }
+  handSendLocation = () => {
+    messaging.geoLocation()
+      .then(res => console.log(res, 'success result'))
+      .catch(e => console.log(e, 'error result'))
   }
   renderMessages = () => {
     return this.props.messages.map(message => (
@@ -18,7 +24,7 @@ class Chat extends Component {
         <p><span className="c-chat__name">{capitalizeFirstLetter(message.from)}</span> <span className="c-chat__time">{message.createAt}</span></p>
         <p>{message.text}</p>
       </div>
-    ))
+    ));
   }
   render() {
     return [
@@ -49,16 +55,20 @@ class Chat extends Component {
                 />
               </FieldSet>
             </form>
-            <Button btnText='Location' />
+            <Button btnText="Location" onClick={this.handSendLocation} />
           </div>
         </section>
       </main>
-    ]
+    ];
   }
 }
 
-const mapStateToProps = (store) => ({
+Chat.propTypes = {
+  messages: arrayOf(object).isRequired
+};
+
+const mapStateToProps = store => ({
   messages: store.app.messages
-})
+});
 
 export default connect(mapStateToProps)(Chat);
