@@ -2,7 +2,7 @@ import React from 'react';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 
 import Home from '../Home';
-import Chat from '../Chat';
+import Chat from '../pages/Chat/ChatContainer';
 import Documentation from '../Documentation';
 
 const Routes = () => (
