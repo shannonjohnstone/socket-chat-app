@@ -1,0 +1,22 @@
+{
+  "parser": "babel-eslint",
+  "env": {
+    "browser": true,
+    "node": true,
+    "mocha": true
+  },
+  "extends": "airbnb",
+  "plugins": [
+      "react",
+      "jsx-a11y",
+      "import"
+  ],
+  "rules": {
+    "react/jsx-filename-extension": [0, { "extensions": [".js", ".jsx"] }],
+    "comma-dangle": ["error", "never"],
+    "react/no-typos": 0,
+    "import/prefer-default-export": 0,
+    "object-curly-newline": 0,
+    # "function-paren-newline": ["error", { "minItems": 3 }]
+  }
+}
