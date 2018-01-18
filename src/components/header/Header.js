@@ -4,7 +4,7 @@ import classnames from 'classnames';
 import Navigation from '../navigation/Navigation';
 import { navigationConfig } from '../navigation/navigation.config';
 
-const Header = ({ size, position, title, container, navType }) => {
+const Header = ({ size, position, title, container, navType, showNav }) => {
   const headerClassNames = classnames(
     'l-main-header',
     { 'l-main-header--small': size === 'small' },
@@ -15,14 +15,15 @@ const Header = ({ size, position, title, container, navType }) => {
     <header className={headerClassNames}>
       <div className={containerClass}>
         {title && <h1 className="l-h1-reveresed">{title}</h1>}
-        <Navigation navigationConfig={navigationConfig} navType={navType} />
+        {showNav && <Navigation navigationConfig={navigationConfig} navType={navType} />}
       </div>
     </header>
   );
 };
 
 Header.defaultProps = {
-  title: null
+  title: null,
+  showNav: true
 };
 
 Header.propTypes = {
@@ -30,7 +31,8 @@ Header.propTypes = {
   position: string.isRequired,
   title: string,
   container: bool.isRequired,
-  navType: string.isRequired
+  navType: string.isRequired,
+  showNav: bool
 };
 
 export default Header;

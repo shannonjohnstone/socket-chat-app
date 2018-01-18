@@ -1,4 +1,5 @@
 import React from 'react'
+import { arrayOf, object } from 'prop-types';
 import { messaging } from '../../../modules';
 import { clearInputValue } from '../../../helpers/form';
 import { Button, FieldSet, FormGroup, FormInputAddonBtn } from '../../../components';
@@ -48,6 +49,10 @@ const ChatWindow = ({ messages }) => {
       </div>
     </section>
   );
+};
+
+ChatWindow.propTypes = {
+  messages: arrayOf(object).isRequired
 };
 
 export default ChatWindow;
